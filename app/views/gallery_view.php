@@ -11,7 +11,7 @@
             <?php endif; ?>
 
             <?php foreach ($data as $image): ?>
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-2">
                     <div class="card">
                         <?php if (file_exists(UPLOAD_DIR . $image['filename'])): ?>
                             <a href="/view_image?id=<?= htmlspecialchars($image['id']); ?>">
@@ -43,6 +43,12 @@
             <?php endforeach; ?>
         <?php else: ?>
             <p class="text-center">Нет доступных изображений</p>
+        <?php endif; ?>
+
+        <?php if (!isset($_SESSION['user'])): ?>
+            <div class="alert alert-info">
+                Если хотите загрузить изображение — <a href="/login" class="alert-link">войдите</a> или <a href="/register" class="alert-link">зарегистрируйтесь</a>.
+            </div>
         <?php endif; ?>
     </div>
 </div>

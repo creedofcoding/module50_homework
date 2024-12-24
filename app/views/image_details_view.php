@@ -64,7 +64,7 @@
             </div>
 
             <?php if (!isset($_SESSION['user'])): ?>
-                <div class="alert alert-info mt-4">
+                <div class="alert alert-info mt-4 mb-0">
                     Если хотите оставить комментарий — <a href="/login" class="alert-link">войдите</a> или <a href="/register" class="alert-link">зарегистрируйтесь</a>.
                 </div>
             <?php endif; ?>
