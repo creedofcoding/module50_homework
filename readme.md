@@ -34,7 +34,22 @@
 - OS: Windows
 - IDE: [VSCode](https://code.visualstudio.com/)
 - Локальный веб-сервер: [XAMPP](https://www.apachefriends.org/)
+- Программа для работы с БД SQLite: [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 - Браузер: Яндекс
+
+## Как сделать так, чтобы работало?
+- Отредактировать файл `httpd-vhosts.conf` по пути `C:\xampp\apache\conf\extra`, вставив туда этот блок кода **(не забудьте сохранить файл!)**:
+```
+ <VirtualHost *:80>
+    DocumentRoot "C:/xampp/htdocs/module50_homework/public"
+    ServerName module50_homework.local
+ </VirtualHost>
+```
+- Далее открыть файл `hosts` **от имени администратора** (например, в [Notepad++](https://notepad-plus-plus.org/downloads/)) по пути `C:\Windows\System32\drivers\etc` и **внизу всего** вставить эту строчку, **попутно не забыв сохранить файл**:
+```
+127.0.0.1   module50_homework.local
+```
+- **Вуаля! Всё работает!**
 
 ## Дополнительно проделанная работа
 1. **Переделана логика в файле route.php.** Теперь можно **действительно** писать **все** действия, которые логически должны находиться в одном контроллере, **в один Контроллер**. Это очень удобно, когда нужно написать, например, **один** Контроллер пользователя Controller_User **со всеми действиями**, а не **три отдельных**: Controller_Register, Controller_Login и Controller_Logout.
