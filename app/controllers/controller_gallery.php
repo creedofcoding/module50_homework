@@ -230,9 +230,12 @@ class Controller_Gallery extends Controller
                         'type' => 'success', // Тип уведомления ('success', 'error', 'info', 'warning')
                         'message' => 'Изображение успешно удалено!' // Сообщение уведомления
                     ];
-                } else {
+                } else if (!file_exists($filePath)) {
+                    // Удаляем запись из базы данных
                     $galleryModel->deleteImage($imageId, $userId);
                     echo json_encode(['success' => true, 'message' => 'Запись в БД удалена.']);
+                } else {
+                    echo json_encode(['status' => 'error', 'message' => 'Ошибка при удалении изображения.']);
                 }
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'Ошибка: изображение не найдено или у вас нет прав на его удаление.']);
